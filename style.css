@@ -1,0 +1,678 @@
+/* =========================================================
+   STUDENT PORTFOLIO - Dark Cyber Theme
+   Sections: 1.Variables 2.Base 3.Navbar 4.Layout 5.Glass cards
+   6.Slideshow 7.Typing 8.Skills 9.Timeline 10.Animations 11.Mobile
+   ========================================================= */
+
+/* 1. Color & style variables (change these to re-theme the site) */
+:root {
+    --bg-dark: #050a14;
+    --bg-mid: #0b1a2e;
+    --cyan: #00e5ff;
+    --green: #39ff14;
+    --text: #e6f1ff;
+    --text-dim: #8fa3bf;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(0, 229, 255, 0.2);
+    --radius: 16px;
+}
+
+/* 2. Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Gradient background with soft colored glows */
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(57, 255, 20, 0.08), transparent 40%),
+        linear-gradient(160deg, var(--bg-dark), var(--bg-mid));
+    background-attachment: fixed;
+    /* Page-load fade (CSS only) */
+    animation: pageFade 0.8s ease both;
+}
+@keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
+
+a { color: var(--cyan); }
+
+/* 3. Sticky Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 10, 20, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+.nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--green);
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+}
+nav a {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 26px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+/* Animated underline: a line that grows from 0 to full width */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+    transition: width 0.3s ease;
+}
+nav a:hover { color: var(--cyan); }
+nav a:hover::after, nav a.active::after { width: 100%; }
+nav a.active { color: var(--cyan); }
+
+/* Hidden checkbox that powers the mobile menu */
+.menu-toggle { display: none; }
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin: 5px 0;
+    background: var(--cyan);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* 4. Layout */
+.page-title {
+    text-align: center;
+    margin: 40px 20px 10px;
+    font-size: 2.2rem;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    flex: 1;
+}
+.content { margin-bottom: 30px; }
+.content h2 { color: var(--cyan); margin-bottom: 15px; }
+.content h3 { color: var(--green); margin-bottom: 10px; }
+.content p { margin-bottom: 12px; color: var(--text-dim); }
+.content strong { color: var(--text); }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* 5. Glassmorphism cards */
+.glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 28px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Lift + glow on hover */
+.glass:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
+}
+
+.hero { text-align: center; }
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 28px;
+    border: 2px solid var(--cyan);
+    border-radius: 30px;
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.btn:hover {
+    background: var(--cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--cyan);
+}
+
+/* 6. Hero Slideshow (pure CSS - no JavaScript) */
+.slideshow {
+    position: relative;
+    height: 340px;
+    margin-bottom: 40px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background:
+        linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px) 0 0 / 30px 30px,
+        linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px) 0 0 / 30px 30px,
+        linear-gradient(135deg, #07162a, #0a2a3a);
+}
+/* All slides stacked on top of each other; animation fades them in turn */
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 60px;
+    opacity: 0;
+    /* Each slide fades in, stays, fades out. 3 slides x 4s = 12s loop */
+    animation: slideFade 12s infinite;
+}
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+@keyframes slideFade {
+    0%   { opacity: 0; transform: scale(1.05); }
+    6%   { opacity: 1; transform: scale(1); }
+    30%  { opacity: 1; }
+    36%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Pause everything when the mouse is over the slideshow */
+.slideshow:hover .slide,
+.slideshow:hover .slide *,
+.slideshow:hover .dot,
+.slideshow:hover::after { animation-play-state: paused; }
+.slide h2 {
+    font-size: 2.2rem;
+    color: var(--cyan);
+    text-shadow: 0 0 18px rgba(0, 229, 255, 0.6);
+}
+.slide p { color: var(--text-dim); font-size: 1.1rem; }
+
+
+.dots {
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    text-align: center;
+}
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: dotGlow 12s infinite;
+}
+/* Each dot lights up while its slide is showing */
+.dot:nth-child(2) { animation-delay: 4s; }
+.dot:nth-child(3) { animation-delay: 8s; }
+@keyframes dotGlow {
+    0%, 33%  { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    34%, 100% { background: rgba(255, 255, 255, 0.3); box-shadow: none; }
+}
+
+/* 7. Typing effect */
+/* Text is clipped to width 0, then grows one letter at a time with steps().
+   The right border acts as the blinking cursor. 34 = number of letters. */
+.typing-wrap { display: flex; justify-content: center; }
+.typing {
+    display: inline-block;
+    color: var(--green);
+    font-weight: 600;
+    font-family: monospace;
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    border-right: 2px solid var(--green);
+    animation: typing 3s steps(34) 0.6s forwards, blink 0.8s step-end infinite;
+}
+@keyframes typing { to { width: 34ch; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* 8. Skills progress bars */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+.skill-head { display: flex; justify-content: space-between; align-items: center; }
+.skill-head span { color: var(--cyan); font-weight: 600; }
+.bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 6px 0 14px;
+}
+.bar-fill {
+    height: 100%;
+    width: 0;
+    /* Grows from 0 to the --level set in skills.html */
+    animation: fillBar 1.8s ease 0.6s forwards;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    box-shadow: 0 0 10px var(--cyan);
+    border-radius: 10px;
+}
+@keyframes fillBar { to { width: var(--level); } }
+
+/* 9. Education timeline */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+/* The vertical glowing line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(var(--cyan), var(--green));
+    box-shadow: 0 0 10px var(--cyan);
+}
+.timeline-item { position: relative; margin-bottom: 30px; }
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 28px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    border: 3px solid var(--green);
+    box-shadow: 0 0 12px var(--green);
+}
+.badge {
+    display: inline-block;
+    padding: 2px 12px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    color: var(--bg-dark);
+    background: var(--cyan);
+    font-weight: 600;
+}
+
+.contact-list p { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.thanks { margin-top: 18px; text-align: center; color: var(--green) !important; }
+
+/* 10. Reveal: cards fade and slide up when the page opens.
+   Modern browsers also replay it as you scroll (animation-timeline). */
+.reveal { animation: reveal 0.8s ease both; }
+.reveal:nth-child(2) { animation-delay: 0.15s; }
+.reveal:nth-child(3) { animation-delay: 0.3s; }
+.reveal:nth-child(4) { animation-delay: 0.45s; }
+.reveal:nth-child(5) { animation-delay: 0.6s; }
+.reveal:nth-child(6) { animation-delay: 0.75s; }
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@supports (animation-timeline: view()) {
+    .reveal {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+/* 11. Mobile (screens under 768px) */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+
+    /* Nav becomes a drop-down panel */
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: rgba(5, 10, 20, 0.95);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+    /* When the checkbox is ticked, open the menu */
+    .menu-toggle:checked ~ nav { max-height: 320px; border-bottom: 1px solid var(--glass-border); }
+    nav a { margin: 0; padding: 14px 24px; }
+    nav a::after { display: none; }
+
+    /* Hamburger turns into an X when open */
+    .menu-toggle:checked + .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle:checked + .hamburger span:nth-child(2) { opacity: 0; }
+    .menu-toggle:checked + .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .page-title { font-size: 1.7rem; }
+    .slideshow { height: 280px; }
+    .slide { padding: 20px 50px; }
+    .slide h2 { font-size: 1.5rem; }
+    .glass { padding: 20px; }
+    .typing { font-size: 0.8rem; }
+}
+
+/* =========================================================
+   12. EXTRA AESTHETIC EFFECTS (v2)
+   ========================================================= */
+
+/* Floating glowing orbs, drawn with body::before and body::after (no HTML needed) */
+body::before, body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+    animation: float 14s ease-in-out infinite alternate;
+}
+body::before { width: 300px; height: 300px; background: rgba(0, 229, 255, 0.25); top: 10%; left: -80px; }
+body::after  { width: 260px; height: 260px; background: rgba(57, 255, 20, 0.18); bottom: 5%; right: -60px; animation-delay: -6s; }
+@keyframes float {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(60px, -40px) scale(1.15); }
+}
+
+/* --- Slideshow animations --- */
+/* Slow zoom on the grid background of the active slide (Ken Burns effect) */
+.slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at center, rgba(0, 229, 255, 0.18), transparent 60%);
+    transform: scale(1);
+}
+.slide::before { animation: zoom 12s infinite; }
+@keyframes zoom { 0% { transform: scale(1); } 36%, 100% { transform: scale(1.4); } }
+
+/* Heading slides down, text slides up each time a slide appears */
+/* (These repeat every 12s together with their slide) */
+.slide h2 { animation: slideDown 12s infinite; }
+.slide p  { animation: slideUp 12s infinite; }
+.slide:nth-child(2) h2, .slide:nth-child(2) p, .slide:nth-child(2)::before { animation-delay: 4s; }
+.slide:nth-child(3) h2, .slide:nth-child(3) p, .slide:nth-child(3)::before { animation-delay: 8s; }
+@keyframes slideDown { 0% { opacity: 0; transform: translateY(-40px); } 8%, 100% { opacity: 1; transform: none; } }
+@keyframes slideUp   { 0%, 2% { opacity: 0; transform: translateY(40px); } 10%, 100% { opacity: 1; transform: none; } }
+
+
+/* Thin bar at the top that fills up for each slide (4s, repeats) */
+.slideshow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    box-shadow: 0 0 10px var(--cyan);
+    z-index: 5;
+    animation: progress 4s linear infinite;
+}
+@keyframes progress { to { width: 100%; } }
+
+/* Animated glowing border around the slideshow */
+.slideshow { animation: borderGlow 4s ease-in-out infinite alternate; }
+@keyframes borderGlow {
+    from { box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+    to   { box-shadow: 0 0 30px rgba(57, 255, 20, 0.35); }
+}
+
+/* Shine sweep across glass cards on hover */
+.glass { position: relative; overflow: hidden; }
+.glass::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transform: skewX(-20deg);
+}
+.glass:hover::after { animation: shine 0.9s ease; }
+@keyframes shine { to { left: 125%; } }
+
+/* Page title shimmers through the gradient */
+.page-title {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { to { background-position: 200% center; } }
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+
+/* =========================================================
+   13. 3D EFFECTS (v3) - pure CSS, no JavaScript
+   Key ideas: perspective (depth), transform-style: preserve-3d,
+   rotateX / rotateY / translateZ.
+   ========================================================= */
+
+/* 13.1 Give containers depth so children can tilt in 3D */
+.container,
+.skills-grid,
+.timeline-item,
+.slideshow { perspective: 1200px; }
+
+/* 13.2 Glass cards tilt in 3D on hover.
+   We use the separate "rotate" and "translate" properties because the
+   reveal animation already controls "transform" and would override it. */
+.glass {
+    transition: translate 0.4s ease, rotate 0.4s ease, box-shadow 0.4s ease;
+}
+.glass:hover {
+    transform: none;
+    translate: 0 -8px 40px;
+    rotate: 0 1 0 -6deg;          /* tilt around the Y axis */
+    box-shadow: 0 18px 40px rgba(0, 229, 255, 0.3), -8px 0 20px rgba(57, 255, 20, 0.15);
+}
+.skills-grid .glass:nth-child(even):hover,
+.timeline-item:nth-child(even) .glass:hover { rotate: 0 1 0 6deg; }   /* alternate direction */
+
+/* 13.3 Page background: a moving 3D grid floor (like a retro-future horizon) */
+html::before {
+    content: "";
+    position: fixed;
+    left: -50%;
+    right: -50%;
+    bottom: 0;
+    height: 45vh;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(0, 229, 255, 0.28) 1px, transparent 1px) 0 0 / 60px 60px,
+        linear-gradient(90deg, rgba(0, 229, 255, 0.28) 1px, transparent 1px) 0 0 / 60px 60px;
+    transform: perspective(300px) rotateX(65deg);   /* lay the grid down like a floor */
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
+    opacity: 0.55;
+    animation: gridMove 3s linear infinite;
+}
+@keyframes gridMove {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 0 60px, 0 60px; }
+}
+
+/* 13.4 Slideshow: slides flip in and out in 3D (replaces the old fade) */
+.slide { backface-visibility: hidden; }
+@keyframes slideFade {
+    0%   { opacity: 0; transform: rotateY(-75deg) scale(0.9); }
+    6%   { opacity: 1; transform: rotateY(0) scale(1); }
+    30%  { opacity: 1; transform: rotateY(0) scale(1); }
+    36%  { opacity: 0; transform: rotateY(75deg) scale(0.9); }
+    100% { opacity: 0; transform: rotateY(75deg) scale(0.9); }
+}
+/* Extruded 3D look for slide headings (stacked shadows = depth) */
+.slide h2 {
+    text-shadow:
+        1px 1px 0 #00a8bd,
+        2px 2px 0 #008ba3,
+        3px 3px 0 #006f82,
+        4px 4px 0 #005566,
+        0 0 25px rgba(0, 229, 255, 0.6);
+}
+
+/* 13.5 Rotating 3D cube (HTML is in the home page intro card) */
+.cube-scene {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 36px;
+    perspective: 600px;
+}
+.cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;          /* keep the faces in 3D space */
+    animation: spinCube 14s linear infinite;
+}
+.face {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--green);
+    border: 2px solid var(--cyan);
+    background: rgba(0, 229, 255, 0.1);
+    box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.35), 0 0 14px rgba(0, 229, 255, 0.3);
+}
+/* Each face is turned, then pushed outwards by half the cube size (45px) */
+.face.front  { transform: translateZ(45px); }
+.face.back   { transform: rotateY(180deg) translateZ(45px); }
+.face.right  { transform: rotateY(90deg)  translateZ(45px); }
+.face.left   { transform: rotateY(-90deg) translateZ(45px); }
+.face.top    { transform: rotateX(90deg)  translateZ(45px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(45px); }
+@keyframes spinCube {
+    from { transform: rotateX(-20deg) rotateY(0deg); }
+    to   { transform: rotateX(340deg) rotateY(360deg); }
+}
+
+/* 13.6 Reveal: cards swing up from a tilted 3D position */
+@keyframes reveal {
+    from { opacity: 0; transform: perspective(900px) rotateX(-30deg) translateY(50px) scale(0.95); }
+    to   { opacity: 1; transform: perspective(900px) rotateX(0deg) translateY(0) scale(1); }
+}
+/* Timeline cards swing in from the side */
+@keyframes revealSide {
+    from { opacity: 0; transform: perspective(900px) rotateY(-35deg) translateX(-50px); }
+    to   { opacity: 1; transform: perspective(900px) rotateY(0deg) translateX(0); }
+}
+.timeline-item.reveal { animation-name: revealSide; }
+
+/* 13.7 Buttons: chunky 3D look that presses down when clicked */
+.btn {
+    box-shadow: 0 5px 0 #008ba3, 0 10px 18px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 #008ba3, 0 0 26px var(--cyan);
+}
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #008ba3, 0 0 12px var(--cyan);
+}
+
+/* 13.8 Logo flips around like a coin on hover */
+.logo { display: inline-block; transition: transform 0.7s ease; }
+.logo:hover { transform: perspective(400px) rotateY(360deg); }
+
+/* 13.9 Page title floats gently up and down with a glow */
+.page-title {
+    filter: drop-shadow(0 4px 12px rgba(0, 229, 255, 0.35));
+    animation: shimmer 4s linear infinite, floatY 5s ease-in-out infinite;
+}
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+/* 13.10 Skill bars: inset tube look + a shine that sweeps along the fill */
+.bar { box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6); }
+.bar-fill { position: relative; overflow: hidden; }
+.bar-fill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: translateX(-100%);
+    animation: barShine 2.2s ease-in-out 2.4s infinite;
+}
+@keyframes barShine { to { transform: translateX(100%); } }
+
+/* 13.11 Timeline dots send out a pulsing ring */
+.timeline-dot::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    animation: ping 2s ease-out infinite;
+}
+@keyframes ping {
+    from { transform: scale(0.6); opacity: 0.9; }
+    to   { transform: scale(1.8); opacity: 0; }
+}
+
+/* 13.12 Reduced-motion users: keep content visible when animations are off */
+@media (prefers-reduced-motion: reduce) {
+    .slide:first-child { opacity: 1; }
+    .bar-fill { width: var(--level); }
+    .typing { width: 34ch; }
+}
+
+/* 13.13 Mobile: smaller cube, gentler tilt */
+@media (max-width: 768px) {
+    .cube-scene, .face { width: 70px; height: 70px; }
+    .cube-scene { margin-bottom: 28px; }
+    .face.front  { transform: translateZ(35px); }
+    .face.back   { transform: rotateY(180deg) translateZ(35px); }
+    .face.right  { transform: rotateY(90deg)  translateZ(35px); }
+    .face.left   { transform: rotateY(-90deg) translateZ(35px); }
+    .face.top    { transform: rotateX(90deg)  translateZ(35px); }
+    .face.bottom { transform: rotateX(-90deg) translateZ(35px); }
+}

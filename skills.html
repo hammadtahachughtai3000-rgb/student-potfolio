@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Skills</title>
+    <!-- Google Font (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared stylesheet: goes inside <head> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky header with logo, page title and navigation -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">&lt;HTC/&gt;</a>
+            <!-- Hamburger menu WITHOUT JavaScript: a hidden checkbox.
+                 Clicking the label ticks the checkbox, and CSS shows the menu. -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </label>
+            <nav id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="education.html">Education</a>
+            <a href="skills.html" class="active">Skills</a>
+            <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1 class="page-title">My Skills</h1>
+
+    <main class="container">
+        <section class="content">
+            <h2 class="reveal">My Personal Skills</h2>
+
+            <!-- --level = how full the bar gets (in %) -->
+            <div class="skills-grid">
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>HTML</h3><span>40%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 40%"></div></div>
+                    <p>Beginner level knowledge of HTML web development.</p>
+                </div>
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>CSS</h3><span>35%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 35%"></div></div>
+                    <p>Beginner level knowledge of website designing using CSS.</p>
+                </div>
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>Computer Skills</h3><span>75%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 75%"></div></div>
+                    <p>Good working knowledge of MS Word, MS PowerPoint and MS Excel.</p>
+                </div>
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>Communication</h3><span>90%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 90%"></div></div>
+                    <p>Excellent communication skills.</p>
+                </div>
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>Problem Solving</h3><span>85%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 85%"></div></div>
+                    <p>Excellent problem-solving skills.</p>
+                </div>
+                <div class="card glass reveal">
+                    <div class="skill-head"><h3>Leadership and Teamwork</h3><span>80%</span></div>
+                    <div class="bar"><div class="bar-fill" style="--level: 80%"></div></div>
+                    <p>Ability to lead a team and work effectively with others.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

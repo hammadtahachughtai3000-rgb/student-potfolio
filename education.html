@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Education</title>
+    <!-- Google Font (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared stylesheet: goes inside <head> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky header with logo, page title and navigation -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">&lt;HTC/&gt;</a>
+            <!-- Hamburger menu WITHOUT JavaScript: a hidden checkbox.
+                 Clicking the label ticks the checkbox, and CSS shows the menu. -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </label>
+            <nav id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="education.html" class="active">Education</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1 class="page-title">My Education</h1>
+
+    <main class="container">
+        <section class="content">
+            <h2 class="reveal">Educational Background</h2>
+
+            <!-- Vertical timeline: each .timeline-item is one step -->
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <div class="card glass">
+                        <span class="badge">2021</span>
+                        <h3>Matriculation</h3>
+                        <p>School: Rashid Minhas Group of Schools, Alipur Muzaffargarh</p>
+                        <p>Year: 2021</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <div class="card glass">
+                        <span class="badge">2023</span>
+                        <h3>Intermediate</h3>
+                        <p>College: Rashid Minhas Group of Schools, Alipur Muzaffargarh</p>
+                        <p>Year: 2023</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <div class="card glass">
+                        <span class="badge">Now</span>
+                        <h3>University</h3>
+                        <p>University: Bahria University</p>
+                        <p>Program: Computer Science (CS)</p>
+                        <p>Current Semester: 1st Semester</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Student Portfolio</title>
+    <!-- Google Font (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared stylesheet: goes inside <head> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky header with logo, page title and navigation -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">&lt;HTC/&gt;</a>
+            <!-- Hamburger menu WITHOUT JavaScript: a hidden checkbox.
+                 Clicking the label ticks the checkbox, and CSS shows the menu. -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </label>
+            <nav id="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="education.html">Education</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1 class="page-title">My Student Portfolio</h1>
+
+    <main class="container">
+        <!-- ===== Hero Slideshow ===== -->
+        <section class="slideshow" id="slideshow">
+            <div class="slide">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Hello! I am a Student</p>
+            </div>
+            <div class="slide">
+                <h2>Aspiring Cyber Security Analyst</h2>
+                <p>Learning to protect systems and networks</p>
+            </div>
+            <div class="slide">
+                <h2>Bahria University CS Student</h2>
+                <p>Computer Science &middot; 1st Semester</p>
+            </div>
+
+            <!-- Dots light up in time with the slides (pure CSS animation) -->
+            <div class="dots">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- ===== Intro card ===== -->
+        <section class="content glass reveal hero">
+            <!-- 3D rotating cube (CSS only, see section 13.5 in style.css) -->
+            <div class="cube-scene" aria-hidden="true">
+                <div class="cube">
+                    <div class="face front">HTML</div>
+                    <div class="face back">CSS</div>
+                    <div class="face right">SEC</div>
+                    <div class="face left">CS</div>
+                    <div class="face top">&lt;/&gt;</div>
+                    <div class="face bottom">0101</div>
+                </div>
+            </div>
+            <h3>Hello! I am a Student</h3>
+            <!-- Intro card -->
+            <!-- Typing effect made with CSS only (see section 7 in style.css) -->
+            <p class="typing-wrap"><span class="typing">Aspiring Cyber Security Analyst...</span></p>
+            <p>
+                Welcome to my personal portfolio website.
+                I am a student who loves learning new things
+                and exploring technology.
+            </p>
+            <a class="btn" href="about.html">About Me</a>
+        </section>
+    </main>
+
+</body>
+</html>
